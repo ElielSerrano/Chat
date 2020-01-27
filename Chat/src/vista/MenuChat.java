@@ -8,6 +8,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JLabel;
+
+import modelo.Clock;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -26,6 +29,7 @@ public class MenuChat {
 	private JButton btnEnviarMensaje;
 	private JButton minimizar;
 	private JButton cerrar;
+	Clock reloj = new Clock();
 
 	/**
 	 * Launch the application.
@@ -36,7 +40,7 @@ public class MenuChat {
 				try {
 					MenuChat window = new MenuChat();
 					window.menuChat.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,7 +53,8 @@ public class MenuChat {
 	 */
 	public MenuChat() {
 		initialize();
-        menuChat.setUndecorated(true);
+		menuChat.setUndecorated(true);
+
 	}
 
 	/**
@@ -102,6 +107,9 @@ public class MenuChat {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// abrir vista para elegir a quien enviar mensaje
+				Usuarios usr = new Usuarios();
+				usr.Uframe.setVisible(true);
+				menuChat.dispose();
 			}
 		});
 		btnEnviarMensaje.setBounds(209, 183, 57, 33);
@@ -112,7 +120,7 @@ public class MenuChat {
 		minimizar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				menuChat.setExtendedState(JFrame.CROSSHAIR_CURSOR); 
+				menuChat.setExtendedState(JFrame.CROSSHAIR_CURSOR);
 			}
 		});
 		minimizar.setOpaque(true);
@@ -135,8 +143,9 @@ public class MenuChat {
 		cerrar.setOpaque(true);
 		cerrar.setContentAreaFilled(false);
 		menuChat.getContentPane().add(cerrar);
-		
+		// llamada hilo clock
+		modelo.Clock.reloj();
+
 	}
 
-	
 }

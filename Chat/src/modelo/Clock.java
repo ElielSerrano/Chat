@@ -11,17 +11,21 @@ import java.util.GregorianCalendar;
  *
  */
 public class Clock implements Runnable {
-	Thread t;
+	static Thread t;
 
 	/**
 	 * @param t
 	 */
-	public Clock(Thread t) {
+	public Clock() {
 		this.t = t;
 	}
 
 	@Override
 	public void run() {
+		reloj();
+	}
+
+	public static void reloj() {
 		try {
 			while (true) {
 				t.sleep(1000);
@@ -33,26 +37,16 @@ public class Clock implements Runnable {
 				// int second = cal.get(Calendar.SECOND);
 				int minute = cal.get(Calendar.MINUTE);
 				int hours = cal.get(Calendar.HOUR_OF_DAY);
-
-				/*
-				 * String dia[] = { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes",
-				 * "Sabado", "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes",
-				 * "Sabado", "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes",
-				 * "Sabado", "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes",
-				 * "Sabado", "Domingo", "Lunes", "Martes", "Miercoles" };
-				 */
-
 				String mes[] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
 						"Octubre", "Noviembre", "Diciembre" };
-
 				// MODIFICAR LABEL RELOJ
 				for (int i = 0; i < mes.length; i++) {
-				vista.MenuChat.hora.setText(
+					vista.MenuChat.hora.setText(
 							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
-					// + day + dia[day - 1]
 				}
+			t.start();
 			}
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
