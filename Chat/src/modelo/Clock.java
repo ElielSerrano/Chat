@@ -41,14 +41,26 @@ public class Clock implements Runnable {
 						"Octubre", "Noviembre", "Diciembre" };
 				// MODIFICAR LABEL RELOJ
 				for (int i = 0; i < mes.length; i++) {
+
+					vista.Login.horaLogin.setText(
+							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
+					vista.DatosServidor.horaServidor.setText(
+							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
 					vista.MenuChat.hora.setText(
 							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
+					vista.Usuarios.horaUsuarios.setText(
+							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
+					vista.Chat.horaChat.setText(
+							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
+					vista.Servidor.horaServer.setText(
+							"<html>" + day + " " + mes[month] + "  " + " Hora  " + hours + ":" + minute + "</html>");
+
 				}
-			t.start();
+				t.start();
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 

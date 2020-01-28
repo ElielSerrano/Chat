@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.Color;
 
 public class Usuarios {
 
@@ -24,8 +25,10 @@ public class Usuarios {
 	private JButton enviarA;
 	private JComboBox comboBox_Usuarios;
 	private JButton enviarTodos;
-	public static JLabel hora;
+	public static JLabel horaUsuarios;
 	Clock reloj = new Clock();
+	private JLabel lblNewLabel;
+	private JLabel marcaagua;
 	
 
 	/**
@@ -50,6 +53,7 @@ public class Usuarios {
 	public Usuarios() {
 		initialize();
 		Uframe.setUndecorated(true);
+		Uframe.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -108,6 +112,7 @@ public class Usuarios {
 		Uframe.getContentPane().add(comboBox_Usuarios);
 
 		JLabel lblEnviarMensaje = new JLabel("Enviar Mensaje  a...");
+		lblEnviarMensaje.setForeground(Color.DARK_GRAY);
 		lblEnviarMensaje.setFont(new Font("Consolas", Font.BOLD, 20));
 		lblEnviarMensaje.setBounds(111, 85, 199, 43);
 		Uframe.getContentPane().add(lblEnviarMensaje);
@@ -119,10 +124,20 @@ public class Usuarios {
 		enviarTodos.setContentAreaFilled(false);
 		Uframe.getContentPane().add(enviarTodos);
 
-		hora = new JLabel("");
-		hora.setBounds(280, 245, 143, 33);
-		Uframe.getContentPane().add(hora);
+		horaUsuarios = new JLabel("");
+		horaUsuarios.setBounds(297, 256, 143, 33);
+		Uframe.getContentPane().add(horaUsuarios);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Usuarios.class.getResource("/img/square.png")));
+		lblNewLabel.setBounds(31, 66, 380, 192);
+		Uframe.getContentPane().add(lblNewLabel);
 
+		marcaagua = new JLabel("");
+		marcaagua.setIcon(new ImageIcon(Login.class.getResource("/img/iconoMarcaAgua.png")));
+		marcaagua.setBounds(400, 16, 40, 38);
+		Uframe.getContentPane().add(marcaagua);
+		
 		modelo.Clock.reloj();
 
 	}

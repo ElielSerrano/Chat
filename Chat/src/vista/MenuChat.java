@@ -18,6 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class MenuChat {
 
@@ -30,6 +31,8 @@ public class MenuChat {
 	private JButton minimizar;
 	private JButton cerrar;
 	Clock reloj = new Clock();
+	private JLabel recuadro;
+	private JLabel marcaagua;
 
 	/**
 	 * Launch the application.
@@ -54,6 +57,7 @@ public class MenuChat {
 	public MenuChat() {
 		initialize();
 		menuChat.setUndecorated(true);
+		menuChat.setLocationRelativeTo(null);
 
 	}
 
@@ -69,9 +73,15 @@ public class MenuChat {
 		menuChat.setBounds(100, 100, 450, 300);
 		menuChat.getContentPane().setLayout(null);
 
+		recuadro = new JLabel("");
+		recuadro.setIcon(new ImageIcon(MenuChat.class.getResource("/img/square.png")));
+		recuadro.setBounds(23, 47, 380, 192);
+		menuChat.getContentPane().add(recuadro);
+
 		lblNewLabel = new JLabel("Conectados:");
+		lblNewLabel.setForeground(Color.DARK_GRAY);
 		lblNewLabel.setFont(new Font("Consolas", Font.BOLD, 20));
-		lblNewLabel.setBounds(23, 42, 129, 62);
+		lblNewLabel.setBounds(34, 59, 129, 62);
 		menuChat.getContentPane().add(lblNewLabel);
 
 		lblNewLabel_1 = new JLabel("aqui gente conectada");
@@ -95,7 +105,7 @@ public class MenuChat {
 		menuChat.getContentPane().add(btn_Refrescar);
 
 		hora = new JLabel("");
-		hora.setBounds(287, 229, 147, 32);
+		hora.setBounds(293, 257, 147, 32);
 		menuChat.getContentPane().add(hora);
 
 		btnEnviarMensaje = new JButton("");
@@ -145,6 +155,11 @@ public class MenuChat {
 		menuChat.getContentPane().add(cerrar);
 		// llamada hilo clock
 		modelo.Clock.reloj();
+
+		marcaagua = new JLabel("");
+		marcaagua.setIcon(new ImageIcon(Login.class.getResource("/img/iconoMarcaAgua.png")));
+		marcaagua.setBounds(400, 16, 40, 38);
+		menuChat.getContentPane().add(marcaagua);
 
 	}
 
